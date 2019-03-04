@@ -5,7 +5,7 @@ export default class Store {
         this.state = initialState;
         this.listeners = [];
       }
-    
+
       addListener(listener) {
         this.listeners.push(listener);
         const removeListener = () => {
@@ -14,14 +14,14 @@ export default class Store {
         };
         return removeListener;
       }
-    
+
       setState(state) {
         this.state = state;
         for (const listener of this.listeners) {
           listener.call(this, state);
         }
       }
-    
+
       getState() {
         return this.state;
       }
